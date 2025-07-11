@@ -1,5 +1,8 @@
 package org.example.admin_module;
 
+import org.example.Buildings.Enclosures.BirdEnclosure;
+import org.example.Buildings.Enclosures.FelineEnclosure;
+import org.example.Buildings.Enclosures.PachydermEnclosure;
 import org.example.Zoo;
 
 import java.util.HashMap;
@@ -9,6 +12,9 @@ public class AdministratorModule {
     Scanner scanner = new Scanner(System.in);
     Zoo zoo = new Zoo();
     HashMap<String, String> zooSetupList = zoo.getZooSetupList();
+    PachydermEnclosure pachydermEnclosure;
+    FelineEnclosure felineEnclosure;
+    BirdEnclosure birdEnclosure;
 
     public String setup() {
         System.out.println("\n--- Zoo Setup ---");
@@ -42,6 +48,10 @@ public class AdministratorModule {
         zooSetupList.put("Shop Vendor", shopVendor);
 
         zoo.setZooOpen(true);
+
+        pachydermEnclosure = new PachydermEnclosure(zooSetupList.get("Pachyderm Handler"));
+        felineEnclosure = new FelineEnclosure(zooSetupList.get("Feline Handler"));
+        birdEnclosure = new BirdEnclosure(zooSetupList.get("Bird Handler"));
 
         return "Zoo staff setup complete.";
     }

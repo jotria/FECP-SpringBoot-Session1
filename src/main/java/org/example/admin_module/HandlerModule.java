@@ -6,12 +6,10 @@ import java.util.Scanner;
 public class HandlerModule {
     Scanner scanner = new Scanner(System.in);
     AdministratorModule adminModule;
-    HashMap<String, String> zooSetupList;
     String handlerName;
 
     public HandlerModule(AdministratorModule adminModule){
         this.adminModule = adminModule;
-        this.zooSetupList = adminModule.getZooSetupList();
     }
 
     public String getHandlerName(){
@@ -22,9 +20,9 @@ public class HandlerModule {
     }
 
     public boolean animalHandlerCheck(){
-        String pachydermHandler = zooSetupList.get("Pachyderm Handler");
-        String felineHandler = zooSetupList.get("Feline Handler");
-        String birdHandler = zooSetupList.get("Bird Handler");
+        String pachydermHandler = adminModule.pachydermEnclosure.getStaff();
+        String felineHandler = adminModule.felineEnclosure.getStaff();
+        String birdHandler = adminModule.birdEnclosure.getStaff();
         String handlerName = getHandlerName();
 
         if((pachydermHandler != null && pachydermHandler.equals(handlerName)) ||
