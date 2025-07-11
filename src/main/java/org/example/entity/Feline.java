@@ -1,8 +1,10 @@
 package org.example.entity;
 
+import org.example.Buildings.Building;
+
 public class Feline extends Animal {
 
-    protected String location;
+    protected Building location;
 
     public Feline(String name, boolean isHealthy) {
         super(name, isHealthy);
@@ -10,7 +12,7 @@ public class Feline extends Animal {
 
     @Override
     public void roam() {
-        System.out.println(this + "is roaming.");
+        System.out.println(this.name + "is roaming.");
     }
 
     @Override
@@ -18,7 +20,7 @@ public class Feline extends Animal {
 
     }
 
-    public String getLocation() {
+    public Building getLocation() {
         return location;
     }
 }
