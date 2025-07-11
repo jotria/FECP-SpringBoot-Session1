@@ -8,6 +8,10 @@ public abstract class Enclosure implements Building {
     private String staff;
     private ArrayList<String> animals = new ArrayList<>();
 
+    public Enclosure(String staff) {
+        this.staff = staff;
+    }
+
     @Override
     public String getStaff() {
         return staff;
