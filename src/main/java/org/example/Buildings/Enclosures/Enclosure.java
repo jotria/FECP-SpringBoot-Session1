@@ -1,12 +1,13 @@
 package org.example.Buildings.Enclosures;
 
 import org.example.Buildings.Building;
+import org.example.entity.Animal;
 
 import java.util.ArrayList;
 
 public abstract class Enclosure implements Building {
     private String staff;
-    private ArrayList<String> animals = new ArrayList<>();
+    protected ArrayList<Animal> animals = new ArrayList<>();
 
     public Enclosure(String staff) {
         this.staff = staff;
@@ -22,11 +23,11 @@ public abstract class Enclosure implements Building {
         this.staff = staff;
     }
 
-    public ArrayList<String> getAnimals() {
+    public ArrayList<Animal> getAnimals() {
         return animals;
     }
 
-    public void setAnimals(ArrayList<String> animals) {
+    public void setAnimals(ArrayList<Animal> animals) {
         this.animals = animals;
     }
 }

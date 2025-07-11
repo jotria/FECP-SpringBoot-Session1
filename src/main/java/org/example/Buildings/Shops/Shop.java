@@ -13,6 +13,14 @@ public class Shop implements Building {
     public Shop(String staff) {
         this.staff = staff;
         productList = new HashMap<>();
+
+        productList.put("Plush Toy", 100);
+        productList.put("Coke", 75);
+        productList.put("Fries", 30);
+        productList.put("Pizza", 150);
+        productList.put("Water", 20);
+
+
     }
 
     public HashMap<String, Integer> getProductList() {
