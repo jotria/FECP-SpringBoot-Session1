@@ -4,9 +4,9 @@ public abstract class Animal {
     protected String name;
     protected boolean isHealthy;
 
-    public Animal(String name, boolean isHealthy){
+    public Animal(String name){
         this.name = name;
-        this.isHealthy = isHealthy;
+        this.isHealthy = true;
     }
 
     public void eat(){

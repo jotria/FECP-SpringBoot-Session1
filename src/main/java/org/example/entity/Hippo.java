@@ -1,9 +1,11 @@
 package org.example.entity;
 
+import org.example.Buildings.Building;
+
 public class Hippo extends Pachyderm{
 
-    public Hippo(String name, boolean isHealthy) {
-        super(name, isHealthy);
+    public Hippo(String name, Building location) {
+        super(name, location);
     }
 
     @Override
