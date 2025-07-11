@@ -2,14 +2,14 @@ package org.example.entity;
 
 import org.example.Buildings.Building;
 
-public class Elephant extends Pachyderm{
+public class Cheetah extends Feline{
 
-    public Elephant(String name, Building location) {
+    public Cheetah(String name, Building location) {
         super(name, location);
     }
 
     @Override
     public void makeSound(){
-        System.out.println(this.name + " growls!");
+        System.out.println(this.name + " purrs!");
     }
 }

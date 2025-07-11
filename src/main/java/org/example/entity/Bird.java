@@ -6,8 +6,9 @@ public class Bird extends Animal{
 
     protected Building location;
 
-    public Bird(String name, boolean isHealthy) {
-        super(name, isHealthy);
+    public Bird(String name, Building location) {
+        super(name);
+        this.location = location;
     }
 
     @Override
@@ -23,4 +24,9 @@ public class Bird extends Animal{
     public Building getLocation() {
         return location;
     }
+
+    public void setLocation(Building location) {
+        this.location = location;
+    }
+
 }
