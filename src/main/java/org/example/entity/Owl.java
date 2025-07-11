@@ -1,11 +1,9 @@
 package org.example.entity;
 
-import org.example.Buildings.Building;
-
 public class Owl extends Bird{
 
-    public Owl(String name, Building location) {
-        super(name, location);
+    public Owl(String name, boolean isHealthy) {
+        super(name, isHealthy);
     }
 
     @Override
