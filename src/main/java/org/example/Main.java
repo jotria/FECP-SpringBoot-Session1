@@ -1,7 +1,7 @@
 package org.example;
 
-import org.example.admin_module.AdministratorModule;
-import org.example.admin_module.HandlerModule;
+import org.example.People.AdministratorModule;
+import org.example.People.HandlerModule;
 
 import java.util.Scanner;
 

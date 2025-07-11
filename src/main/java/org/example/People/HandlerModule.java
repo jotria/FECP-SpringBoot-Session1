@@ -1,6 +1,5 @@
-package org.example.admin_module;
+package org.example.People;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class HandlerModule {

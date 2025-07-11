@@ -1,4 +1,4 @@
-package org.example.admin_module;
+package org.example.People;
 
 import org.example.Buildings.Enclosures.BirdEnclosure;
 import org.example.Buildings.Enclosures.FelineEnclosure;
