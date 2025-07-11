@@ -1,13 +1,16 @@
 package org.example.People;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
-public class HandlerModule {
+public class Handler extends People {
     Scanner scanner = new Scanner(System.in);
-    AdministratorModule adminModule;
+    Administrator adminModule;
     String handlerName;
 
-    public HandlerModule(AdministratorModule adminModule){
+    public Handler(Administrator adminModule){
         this.adminModule = adminModule;
     }
 
@@ -36,7 +39,7 @@ public class HandlerModule {
         }
     }
 
-    public void animalDutyMenu() {
+    public int animalDutyMenu() {
         if (animalHandlerCheck()) {
             System.out.println("\n--- Animal Duty Menu ---");
 
@@ -46,18 +49,46 @@ public class HandlerModule {
                 for (String animal : adminModule.pachydermEnclosure.getAnimals()) {
                     System.out.println("- " + animal);
                 }
+                return adminModule.pachydermEnclosure.getAnimals().size();
             } else if (handlerName.equals(adminModule.felineEnclosure.getStaff())) {
                 System.out.println("Feline Enclosure Animals:");
                 for (String animal : adminModule.felineEnclosure.getAnimals()) {
                     System.out.println("- " + animal);
                 }
+                return adminModule.felineEnclosure.getAnimals().size();
             } else if (handlerName.equals(adminModule.birdEnclosure.getStaff())) {
                 System.out.println("Bird Enclosure Animals:");
                 for (String animal : adminModule.birdEnclosure.getAnimals()) {
                     System.out.println("- " + animal);
                 }
+                return adminModule.birdEnclosure.getAnimals().size();
             }
+            System.out.println("No matching enclosure found for handler: " + handlerName);
+            return 0;
         }
+        System.out.println("Handler check failed.");
+        return 0;
+    }
+
+    public void handlerAction(){
+        System.out.println("Choose animal number to interact with (0 to exit): ");
+        int animalNumber = scanner.nextInt();
+        scanner.nextLine();
+
+        if(animalDutyMenu()>animalNumber && animalNumber >0){
+            System.out.println("Choose action: ");
+            System.out.println("1. Feed");
+            System.out.println("2. Examine");
+            System.out.println("3. Exercise");
+
+        } else{
+            System.out.println("Finished duties for the day.");
+        }
+
+    }
+
+    public void feedAnimal(){
+
     }
 
 }

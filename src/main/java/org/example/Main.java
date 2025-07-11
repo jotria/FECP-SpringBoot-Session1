@@ -1,15 +1,15 @@
 package org.example;
 
-import org.example.People.AdministratorModule;
-import org.example.People.HandlerModule;
+import org.example.People.Administrator;
+import org.example.People.Handler;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        AdministratorModule adminModule = new AdministratorModule();
-        HandlerModule handler = new HandlerModule(adminModule);
+        Administrator adminModule = new Administrator();
+        Handler handler = new Handler(adminModule);
 
         boolean isLoggedIn = false;
         int choice;

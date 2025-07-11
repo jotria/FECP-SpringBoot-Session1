@@ -8,7 +8,7 @@ import org.example.Zoo;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class AdministratorModule {
+public class Administrator extends People{
     Scanner scanner = new Scanner(System.in);
     Zoo zoo = new Zoo();
     HashMap<String, String> zooSetupList = zoo.getZooSetupList();
