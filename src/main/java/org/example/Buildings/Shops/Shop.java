@@ -2,7 +2,9 @@ package org.example.Buildings.Shops;
 
 import org.example.Buildings.Building;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Shop implements Building {
     private String staff;
@@ -18,8 +20,58 @@ public class Shop implements Building {
     }
 
     public void listAvailableProducts(){
-        productList.forEach((key, value)-> System.out.print("1. "+ key + " | Price: " + value));
+        System.out.println("===Zoo Shop===");
+        System.out.println("---Available Products---");
+        productList.forEach((key, value)-> System.out.println("1. "+ key + " | Price: " + value));
     }
+
+
+
+    public void makePurchase() {
+        Scanner input = new Scanner(System.in);
+        ArrayList<String> selectedProducts = new ArrayList<>();
+        int totalCost = 0;
+
+        System.out.println("Enter the name of the products you want to purchase (type 'done' to finish):");
+
+        while (true) {
+            String productName = input.nextLine().trim();
+
+            if (productName.equalsIgnoreCase("done")) break;
+
+            if (productList.containsKey(productName)) {
+                selectedProducts.add(productName);
+                int price = productList.get(productName);
+                totalCost += price;
+                System.out.println(productName + " added to cart. ₱" + price);
+            } else {
+                System.out.println(productName + " is not available in the shop.");
+            }
+        }
+        System.out.println("\n---Purchase Summary---");
+        for (String item : selectedProducts) {
+            System.out.println(item + " - ₱" + productList.get(item));
+        }
+
+        System.out.println("Total Cost: ₱" + totalCost);
+
+        System.out.println("Proceed to checkout? (yes/no)");
+        String checkoutFlag = input.nextLine();
+
+        if (checkoutFlag.equalsIgnoreCase("yes")) {
+            System.out.println("Payment successful!");
+            System.out.println("\n📜 Receipt:");
+            for (String item : selectedProducts) {
+                System.out.println(item + " - ₱" + productList.get(item));
+            }
+            System.out.println("Total Paid: ₱" + totalCost);
+
+        }
+
+        System.out.println("Thank you! Please come again.");
+    }
+
+
 
     @Override
     public String getStaff() {
