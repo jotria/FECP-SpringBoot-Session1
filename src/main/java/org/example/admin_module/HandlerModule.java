@@ -6,12 +6,10 @@ import java.util.Scanner;
 public class HandlerModule {
     Scanner scanner = new Scanner(System.in);
     AdministratorModule adminModule;
-    HashMap<String, String> zooSetupList;
     String handlerName;
 
     public HandlerModule(AdministratorModule adminModule){
         this.adminModule = adminModule;
-        this.zooSetupList = adminModule.getZooSetupList();
     }
 
     public String getHandlerName(){
@@ -22,9 +20,9 @@ public class HandlerModule {
     }
 
     public boolean animalHandlerCheck(){
-        String pachydermHandler = zooSetupList.get("Pachyderm Handler");
-        String felineHandler = zooSetupList.get("Feline Handler");
-        String birdHandler = zooSetupList.get("Bird Handler");
+        String pachydermHandler = adminModule.pachydermEnclosure.getStaff();
+        String felineHandler = adminModule.felineEnclosure.getStaff();
+        String birdHandler = adminModule.birdEnclosure.getStaff();
         String handlerName = getHandlerName();
 
         if((pachydermHandler != null && pachydermHandler.equals(handlerName)) ||
@@ -39,10 +37,28 @@ public class HandlerModule {
         }
     }
 
-    public void animalDutyMenu(){
-        if(animalHandlerCheck()){
+    public void animalDutyMenu() {
+        if (animalHandlerCheck()) {
             System.out.println("\n--- Animal Duty Menu ---");
 
+            // Match handler to the appropriate enclosure
+            if (handlerName.equals(adminModule.pachydermEnclosure.getStaff())) {
+                System.out.println("Pachyderm Enclosure Animals:");
+                for (String animal : adminModule.pachydermEnclosure.getAnimals()) {
+                    System.out.println("- " + animal);
+                }
+            } else if (handlerName.equals(adminModule.felineEnclosure.getStaff())) {
+                System.out.println("Feline Enclosure Animals:");
+                for (String animal : adminModule.felineEnclosure.getAnimals()) {
+                    System.out.println("- " + animal);
+                }
+            } else if (handlerName.equals(adminModule.birdEnclosure.getStaff())) {
+                System.out.println("Bird Enclosure Animals:");
+                for (String animal : adminModule.birdEnclosure.getAnimals()) {
+                    System.out.println("- " + animal);
+                }
+            }
         }
     }
+
 }
