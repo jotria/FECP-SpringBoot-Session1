@@ -10,12 +10,12 @@ public abstract class Animal {
     }
 
     public void eat(){
-        System.out.println(this + " is eating.");
+        System.out.println(this.name + " is eating.");
         this.makeSound();
     }
 
     public void sleep(){
-
+        System.out.println(this.name + " is sleeping.");
     }
 
     public abstract void roam();
