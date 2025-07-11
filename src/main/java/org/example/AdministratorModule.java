@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class AdministratorModule {
     Scanner scanner = new Scanner(System.in);
-    HashMap<String, String> zooSetupList = new HashMap<>();
+    Zoo zoo = new Zoo();
+    HashMap<String, String> zooSetupList = zoo.getZooSetupList();
 
     public String setup(){
         System.out.println("\n--- Zoo Setup ---");
@@ -37,6 +38,8 @@ public class AdministratorModule {
         System.out.print("Enter vendor for the Shop: ");
         String shopVendor = scanner.nextLine();
         zooSetupList.put("Shop Vendor", shopVendor);
+
+        zoo.setZooOpen(true);
 
         return "Zoo staff setup complete.";
     }
