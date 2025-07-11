@@ -1,4 +1,6 @@
-package org.example;
+package org.example.admin_module;
+
+import org.example.Zoo;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -8,10 +10,10 @@ public class AdministratorModule {
     Zoo zoo = new Zoo();
     HashMap<String, String> zooSetupList = zoo.getZooSetupList();
 
-    public String setup(){
+    public String setup() {
         System.out.println("\n--- Zoo Setup ---");
 
-        System.out.print("\nEnter your name, Manager: ");
+        System.out.print("Enter your name, Manager: ");
         String managerName = scanner.nextLine();
         zooSetupList.put("Manager Name", managerName);
 
@@ -42,5 +44,9 @@ public class AdministratorModule {
         zoo.setZooOpen(true);
 
         return "Zoo staff setup complete.";
+    }
+
+    public HashMap<String, String> getZooSetupList() {
+        return zooSetupList;
     }
 }
