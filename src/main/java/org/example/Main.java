@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        AdministratorModule adminModule = new AdministratorModule();
 
         boolean isLoggedIn = false;
         int choice;
@@ -39,7 +40,7 @@ public class Main {
 
             switch (choice){
                 case 1:
-                    System.out.println("--- Zoo Setup ---");
+                    System.out.println(adminModule.setup());
                     break;
                 case 2:
                     System.out.println("Enter your name (Handler): ");
