@@ -9,6 +9,14 @@ public abstract class Animal {
         this.isHealthy = isHealthy;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public boolean isHealthy() {
+        return isHealthy;
+    }
+
     public void eat(){
         System.out.println(this.name + " is eating.");
         this.makeSound();
@@ -20,4 +28,6 @@ public abstract class Animal {
 
     public abstract void roam();
     public abstract void makeSound();
+
+
 }
