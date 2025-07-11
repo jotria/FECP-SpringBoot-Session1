@@ -1,15 +1,15 @@
 package org.example;
 
-import org.example.admin_module.AdministratorModule;
-import org.example.admin_module.HandlerModule;
+import org.example.People.Administrator;
+import org.example.People.Handler;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        AdministratorModule adminModule = new AdministratorModule();
-        HandlerModule handler = new HandlerModule(adminModule);
+        Administrator adminModule = new Administrator();
+        Handler handler = new Handler(adminModule);
 
         boolean isLoggedIn = false;
         int choice;
@@ -48,6 +48,7 @@ public class Main {
                     break;
                 case 2:
                     handler.animalDutyMenu();
+                    handler.handlerAction();
                     break;
                 case 3:
                     break;

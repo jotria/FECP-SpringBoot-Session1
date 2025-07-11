@@ -24,8 +24,9 @@ public class Feline extends Animal {
     public Building getLocation() {
         return location;
     }
-
+  
     public void setLocation(Building location) {
         this.location = location;
     }
+  
 }

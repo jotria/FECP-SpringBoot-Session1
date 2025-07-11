@@ -28,5 +28,5 @@ public class Bird extends Animal{
     public void setLocation(Building location) {
         this.location = location;
     }
-
+  
 }

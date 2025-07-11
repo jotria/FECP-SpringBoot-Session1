@@ -1,4 +1,4 @@
-package org.example.admin_module;
+package org.example.People;
 
 import org.example.Buildings.Enclosures.BirdEnclosure;
 import org.example.Buildings.Enclosures.FelineEnclosure;
@@ -8,7 +8,7 @@ import org.example.Zoo;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class AdministratorModule {
+public class Administrator extends People{
     Scanner scanner = new Scanner(System.in);
     Zoo zoo = new Zoo();
     HashMap<String, String> zooSetupList = zoo.getZooSetupList();
