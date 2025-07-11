@@ -4,8 +4,8 @@ import org.example.Buildings.Building;
 
 public class Rhino extends Pachyderm {
 
-    public Rhino(String name, Building location) {
-        super(name, location);
+    public Rhino(String name, boolean isHealthy) {
+        super(name, isHealthy);
     }
 
     @Override

@@ -4,8 +4,8 @@ import org.example.Buildings.Building;
 
 public class Parrot extends Bird{
 
-    public Parrot(String name, Building location) {
-        super(name, location);
+    public Parrot(String name, boolean isHealthy) {
+        super(name, isHealthy);
     }
 
     @Override

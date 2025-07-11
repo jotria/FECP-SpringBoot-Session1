@@ -6,9 +6,8 @@ public class Feline extends Animal {
 
     protected Building location;
 
-    public Feline(String name, Building location) {
-        super(name);
-        this.location = location;
+    public Feline(String name, boolean isHealthy) {
+        super(name, isHealthy);
     }
 
     @Override
