@@ -5,8 +5,9 @@ import org.example.Buildings.Building;
 public class Pachyderm extends Animal{
     protected Building location;
 
-    public Pachyderm(String name, boolean isHealthy) {
-        super(name, isHealthy);
+    public Pachyderm(String name, Building location) {
+        super(name);
+        this.location = location;
     }
 
     @Override
@@ -22,4 +23,9 @@ public class Pachyderm extends Animal{
     public Building getLocation() {
         return location;
     }
+
+    public void setLocation(Building location) {
+        this.location = location;
+    }
+  
 }
