@@ -1,8 +1,5 @@
 package org.example.People;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Handler extends People {
@@ -46,20 +43,20 @@ public class Handler extends People {
             // Match handler to the appropriate enclosure
             if (handlerName.equals(adminModule.pachydermEnclosure.getStaff())) {
                 System.out.println("Pachyderm Enclosure Animals:");
-                for (String animal : adminModule.pachydermEnclosure.getAnimals()) {
-                    System.out.println("- " + animal);
+                for (int i=0; i<adminModule.pachydermEnclosure.getAnimals().size(); i++) {
+                    System.out.println(i+1 + adminModule.pachydermEnclosure.getAnimals().get(i));
                 }
                 return adminModule.pachydermEnclosure.getAnimals().size();
             } else if (handlerName.equals(adminModule.felineEnclosure.getStaff())) {
                 System.out.println("Feline Enclosure Animals:");
-                for (String animal : adminModule.felineEnclosure.getAnimals()) {
-                    System.out.println("- " + animal);
+                for (int i=0; i<adminModule.felineEnclosure.getAnimals().size(); i++) {
+                    System.out.println(i+1 + adminModule.felineEnclosure.getAnimals().get(i));
                 }
                 return adminModule.felineEnclosure.getAnimals().size();
             } else if (handlerName.equals(adminModule.birdEnclosure.getStaff())) {
                 System.out.println("Bird Enclosure Animals:");
-                for (String animal : adminModule.birdEnclosure.getAnimals()) {
-                    System.out.println("- " + animal);
+                for (int i=0; i<adminModule.pachydermEnclosure.getAnimals().size(); i++) {
+                    System.out.println(i+1 + adminModule.birdEnclosure.getAnimals().get(i));
                 }
                 return adminModule.birdEnclosure.getAnimals().size();
             }
@@ -77,9 +74,29 @@ public class Handler extends People {
 
         if(animalDutyMenu()>animalNumber && animalNumber >0){
             System.out.println("Choose action: ");
-            System.out.println("1. Feed");
-            System.out.println("2. Examine");
-            System.out.println("3. Exercise");
+            System.out.println("1. Feed" + adminModule.pachydermEnclosure.getAnimals().get(animalNumber-1));
+            System.out.println("2. Examine" + adminModule.pachydermEnclosure.getAnimals().get(animalNumber-1));
+            System.out.println("3. Exercise" + adminModule.pachydermEnclosure.getAnimals().get(animalNumber-1));
+
+            int choice;
+
+            do{
+                System.out.print("Choose an option: ");
+                choice = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (choice){
+                    case 1:
+                        feedAnimal();
+                        break;
+                    case 2:
+                        examineAnimal();
+                        break;
+                    case 3:
+                        exerciseAnimal();
+                        break;
+                }
+            } while (choice !=0);
 
         } else{
             System.out.println("Finished duties for the day.");
@@ -88,6 +105,16 @@ public class Handler extends People {
     }
 
     public void feedAnimal(){
+        System.out.println("Feeding...");
+    }
+
+    public void examineAnimal(){
+        System.out.println("Sending to Hospital...");
+
+    }
+
+    public void exerciseAnimal(){
+        System.out.println("Exercise...");
 
     }
 
