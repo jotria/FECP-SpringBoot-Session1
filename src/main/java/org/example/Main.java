@@ -50,7 +50,7 @@ public class Main {
                     if(!isZooSetupCompleted){
                         isZooSetupCompleted = adminModule.setup();
                         if(isZooOpen){
-                            adminModule.getTicketShop().enter();
+                            adminModule.getZoo().zooMenu();
                         }
                         else{
                             System.out.println("Zoo is not opened for visitors yet.");

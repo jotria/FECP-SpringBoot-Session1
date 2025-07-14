@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class Administrator extends People{
     Scanner scanner = new Scanner(System.in);
-    Zoo zoo = new Zoo();
+    Zoo zoo = new Zoo(this);
     HashMap<String, String> zooSetupList = zoo.getZooSetupList();
     PachydermEnclosure pachydermEnclosure;
     FelineEnclosure felineEnclosure;
@@ -78,5 +78,21 @@ public class Administrator extends People{
 
     public TicketShop getTicketShop() {
         return ticketShop;
+    }
+
+    public PachydermEnclosure getPachydermEnclosure() {
+        return pachydermEnclosure;
+    }
+
+    public FelineEnclosure getFelineEnclosure() {
+        return felineEnclosure;
+    }
+
+    public BirdEnclosure getBirdEnclosure() {
+        return birdEnclosure;
+    }
+
+    public Zoo getZoo() {
+        return zoo;
     }
 }

@@ -85,13 +85,11 @@ public class TicketShop implements Building {
         String visitorTicketCode = scanner.next();
         if(validTickets.contains(visitorTicketCode)){
             System.out.println("Succesfully entered Zoo!");
-            //Go to Zoo Module
-            return;
+
         }
         else{
             System.out.println("Not a valid ticket!\n");
             this.enter();
-            return;
         }
     }
 
