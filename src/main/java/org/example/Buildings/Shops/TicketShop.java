@@ -54,43 +54,46 @@ public class TicketShop implements Building {
         }
     }
 
-    public void enter(){
-        System.out.println("== Welcome to the Zoo Ticket Shop ==");
-        System.out.println("Here's what you can experience at the zoo:");
-        System.out.println("- Visit animal enclosures (Elephant, Lion, Owl)");
-        System.out.println("- Buy snacks and drinks from our shops");
-        System.out.println("- Listen to science lectures at the hospital");
-        System.out.println("- Buy fun gifts at our gift shop");
+    public boolean enter(){
+        boolean isValidTicket = false;
+        while(!isValidTicket){
+            System.out.println("== Welcome to the Zoo Ticket Shop ==");
+            System.out.println("Here's what you can experience at the zoo:");
+            System.out.println("- Visit animal enclosures (Elephant, Lion, Owl)");
+            System.out.println("- Buy snacks and drinks from our shops");
+            System.out.println("- Listen to science lectures at the hospital");
+            System.out.println("- Buy fun gifts at our gift shop");
 
-        System.out.print("\nWould you like to buy a ticket(yes/no): ");
-        String buyTicket = scanner.next();
+            System.out.print("\nWould you like to buy a ticket(yes/no): ");
+            String buyTicket = scanner.next();
 
-        //Buy Ticket
-        if(buyTicket.equalsIgnoreCase("yes")){
+            //Buy Ticket
+            if(buyTicket.equalsIgnoreCase("yes")){
 
-            Ticket customerTicket = buyTicket();
+                Ticket customerTicket = buyTicket();
 
-            if (customerTicket != null){
-                System.out.println("\nTicket Purchased!");
-                System.out.println("Your ticket code is " + customerTicket.getTicketCode());
-                validTickets.add(customerTicket.getTicketCode());
-                System.out.println("[Ticket added to the system]\n");
+                if (customerTicket != null){
+                    System.out.println("\nTicket Purchased!");
+                    System.out.println("Your ticket code is " + customerTicket.getTicketCode());
+                    validTickets.add(customerTicket.getTicketCode());
+                    System.out.println("[Ticket added to the system]\n");
 
+                }
+            }
+
+            // if not buying ticket
+            System.out.println("== Visitor Entry ==");
+            System.out.print("Enter your Ticket Code: ");
+            String visitorTicketCode = scanner.next();
+            if(validTickets.contains(visitorTicketCode)){
+                isValidTicket = true;
+                System.out.println("Succesfully entered Zoo!");
+            }
+            else{
+                System.out.println("Not a valid ticket!\n");
             }
         }
-
-        // if not buying ticket
-        System.out.println("== Visitor Entry ==");
-        System.out.print("Enter your Ticket Code: ");
-        String visitorTicketCode = scanner.next();
-        if(validTickets.contains(visitorTicketCode)){
-            System.out.println("Succesfully entered Zoo!");
-
-        }
-        else{
-            System.out.println("Not a valid ticket!\n");
-            this.enter();
-        }
+        return isValidTicket;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.Buildings.Shops.TicketShop;
 import org.example.People.Administrator;
 import org.example.People.Handler;
 
@@ -13,6 +12,7 @@ public class Main {
         Handler handler = new Handler(adminModule);
         boolean isZooOpen = false;
         boolean isZooSetupCompleted = false;
+        boolean isValidTicket = false;
 
         boolean isLoggedIn = false;
         int choice;
@@ -50,7 +50,10 @@ public class Main {
                     if(!isZooSetupCompleted){
                         isZooSetupCompleted = adminModule.setup();
                         if(isZooOpen){
-                            adminModule.getZoo().zooMenu();
+                            isValidTicket = adminModule.getTicketShop().enter();
+                            if (isValidTicket){
+                                //Enter Zoo Module
+                            }
                         }
                         else{
                             System.out.println("Zoo is not opened for visitors yet.");
@@ -58,7 +61,11 @@ public class Main {
                     }
                     else{
                         if(isZooOpen){
-                            adminModule.getTicketShop().enter();
+                            System.out.println("Zoo setup already completed! Proceeding to ticket shop...");
+                            isValidTicket = adminModule.getTicketShop().enter();
+                            if (isValidTicket){
+                                //Enter Zoo Module
+                            }
                         }else {
                             System.out.println("Zoo setup already completed, but zoo is not opened for visitors yet");
                         }
@@ -73,6 +80,8 @@ public class Main {
                     System.out.println("Zoo is now open for visitors!");
                     break;
                 case 4:
+                    isZooOpen = false;
+                    System.out.println("Zoo is now closed for visitors");
                     break;
                 case 5:
                     break;
