@@ -43,46 +43,77 @@ public class Zoo {
         System.out.println("4. Leave Zoo");
 
         int choice;
+
         do{
             System.out.print("Choose an option: ");
             choice = scanner.nextInt();
             scanner.nextLine();
 
-            String animal;
+            int animalNumber = 1;
+            String animalName = "";
 
             switch (choice){
                 case 1:
                     System.out.println("===Zoo Enclosure===");
                     System.out.println("Choose Enclosure: ");
-                    System.out.println("1. Pachyderm (Elephant)");
-                    System.out.println("2. Feline (Lion)");
-                    System.out.println("3. Bird (Owl)");
+                    System.out.println("1. Pachyderm");
+                    System.out.println("2. Feline");
+                    System.out.println("3. Bird");
 
                     System.out.print("Choose an option: ");
                     int option = scanner.nextInt();
                     scanner.nextLine();
 
                     if(option == 1){
-                        animal = "Elephant";
+                        System.out.println("\nPachyderm Enclosure Animals:");
+                        for (int i=0; i<adminModule.getPachydermEnclosure().getAnimals().size(); i++) {
+                            System.out.println((i+1) + ". " + adminModule.getPachydermEnclosure().getAnimals().get(i).getName());
+                        }
+
+                        System.out.print("\nChoose animal number to interact with (0 to exit): ");
+                        animalNumber = scanner.nextInt();
+                        scanner.nextLine();
+
+                        animalName = adminModule.getPachydermEnclosure().getAnimals().get(animalNumber-1).getName();
+
                     } else if(option == 2){
-                        animal = "Lion";
+                        System.out.println("\nFeline Enclosure Animals:");
+                        for (int i=0; i<adminModule.getFelineEnclosure().getAnimals().size(); i++) {
+                            System.out.println((i+1) + ". " + adminModule.getFelineEnclosure().getAnimals().get(i).getName());
+                        }
+
+                        System.out.print("\nChoose animal number to interact with (0 to exit): ");
+                        animalNumber = scanner.nextInt();
+                        scanner.nextLine();
+
+                        animalName = adminModule.getFelineEnclosure().getAnimals().get(animalNumber-1).getName();
+
                     } else if (option==3) {
-                        animal = "Owl";
+                        System.out.println("\nBird Enclosure Animals:");
+                        for (int i=0; i<adminModule.getBirdEnclosure().getAnimals().size(); i++) {
+                            System.out.println((i+1) + ". " + adminModule.getBirdEnclosure().getAnimals().get(i).getName());
+                        }
+
+                        System.out.print("\nChoose animal number to interact with (0 to exit): ");
+                        animalNumber = scanner.nextInt();
+                        scanner.nextLine();
+
+                        animalName = adminModule.getBirdEnclosure().getAnimals().get(animalNumber-1).getName();
                     } else{
-                        animal = "Not in choices";
+                        animalName = "Not in choices";
                     }
 
-                    System.out.print("Would you like to feed " + animal +" ? (yes/no): ");
+                    System.out.print("Would you like to feed " + animalName +" ? (yes/no): ");
                     String willFeed = scanner.nextLine();
 
                     if(willFeed.equals("yes")) {
-                        System.out.println(animal + " is eating.");
+                        System.out.println(animalName + " is eating.");
                         if(option == 1){
-                            adminModule.getPachydermEnclosure().getAnimals().getFirst().makeSound();
+                            adminModule.getPachydermEnclosure().getAnimals().get(animalNumber-1).makeSound();
                         } else if(option == 2){
-                            adminModule.getFelineEnclosure().getAnimals().getFirst().makeSound();
+                            adminModule.getFelineEnclosure().getAnimals().get(animalNumber-1).makeSound();
                         } else if (option==3) {
-                            adminModule.getBirdEnclosure().getAnimals().getFirst().makeSound();
+                            adminModule.getBirdEnclosure().getAnimals().get(animalNumber-1).makeSound();
                         }
                     } else{
                         break;
