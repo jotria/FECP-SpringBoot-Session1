@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.Buildings.Shops.TicketShop;
 import org.example.People.Administrator;
 import org.example.People.Handler;
 
@@ -10,6 +11,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Administrator adminModule = new Administrator();
         Handler handler = new Handler(adminModule);
+        TicketShop ticketShop = new TicketShop();
         boolean isZooOpen = false;
         boolean isZooSetupCompleted = false;
 
@@ -46,22 +48,30 @@ public class Main {
 
             switch (choice){
                 case 1:
-                    if (!isZooSetupCompleted) {
-                        isZooOpen = adminModule.setup();
-                        if (isZooOpen) {
-                            System.out.println("Zoo setup has been completed.");
-                            isZooSetupCompleted = true;
-                        } else {
-                            System.out.println("Zoo setup failed.");
+                    if(!isZooSetupCompleted){
+                        isZooSetupCompleted = adminModule.setup();
+                        if(isZooOpen){
+                            ticketShop.enter();
                         }
-                    } else {
-                        System.out.println("Zoo setup has already been completed and cannot be done again.");
+                        else{
+                            System.out.println("Zoo is not opened for visitors yet.");
+                        }
                     }
+                    else{
+                        if(isZooOpen){
+                            ticketShop.enter();
+                        }else {
+                            System.out.println("Zoo setup already completed, but zoo is not opened for visitors yet");
+                        }
+                    }
+
                     break;
                 case 2:
                     handler.animalDutyMenu();
                     break;
                 case 3:
+                    isZooOpen = true;
+                    System.out.println("Zoo is now open for visitors!");
                     break;
                 case 4:
                     break;
