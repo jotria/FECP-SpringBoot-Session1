@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.Buildings.Shops.TicketShop;
 import org.example.People.Administrator;
 import org.example.People.Handler;
 
@@ -58,6 +57,7 @@ public class Main {
                     }
                     else{
                         if(isZooOpen){
+                            System.out.println("Zoo setup already completed! Proceeding to ticket shop...");
                             adminModule.getTicketShop().enter();
                         }else {
                             System.out.println("Zoo setup already completed, but zoo is not opened for visitors yet");
@@ -73,6 +73,8 @@ public class Main {
                     System.out.println("Zoo is now open for visitors!");
                     break;
                 case 4:
+                    isZooOpen = false;
+                    System.out.println("Zoo is now closed for visitors");
                     break;
                 case 5:
                     break;
