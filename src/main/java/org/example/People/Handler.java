@@ -56,9 +56,12 @@ public class Handler extends People {
                 animalNumber = scanner.nextInt();
                 scanner.nextLine();
 
-                animalName = adminModule.pachydermEnclosure.getAnimals().get(animalNumber-1).getName();
-
-                handlerAction(animalName, animalNumber);
+                if (animalNumber == 0){
+                    handlerAction(null, animalNumber);
+                } else{
+                    animalName = adminModule.pachydermEnclosure.getAnimals().get(animalNumber-1).getName();
+                    handlerAction(animalName, animalNumber);
+                }
 
             } else if (handlerName.equals(adminModule.felineEnclosure.getStaff())) {
                 System.out.println("\nFeline Enclosure Animals:");
@@ -70,9 +73,12 @@ public class Handler extends People {
                 animalNumber = scanner.nextInt();
                 scanner.nextLine();
 
-                animalName = adminModule.felineEnclosure.getAnimals().get(animalNumber-1).getName();
-
-                handlerAction(animalName, animalNumber);
+                if (animalNumber == 0){
+                    handlerAction(null, animalNumber);
+                } else{
+                    animalName = adminModule.felineEnclosure.getAnimals().get(animalNumber-1).getName();
+                    handlerAction(animalName, animalNumber);
+                }
 
             } else if (handlerName.equals(adminModule.birdEnclosure.getStaff())) {
                 System.out.println("\nBird Enclosure Animals:");
@@ -84,9 +90,12 @@ public class Handler extends People {
                 animalNumber = scanner.nextInt();
                 scanner.nextLine();
 
-                animalName = adminModule.birdEnclosure.getAnimals().get(animalNumber-1).getName();
-
-                handlerAction(animalName, animalNumber);
+                if (animalNumber == 0){
+                    handlerAction(null, animalNumber);
+                } else{
+                    animalName = adminModule.birdEnclosure.getAnimals().get(animalNumber-1).getName();
+                    handlerAction(animalName, animalNumber);
+                }
             }
 
         }
@@ -94,7 +103,7 @@ public class Handler extends People {
     }
 
     public void handlerAction(String animalName, int animalNumber){
-        if(animalNumber >0){
+        if(animalNumber > 0){
             System.out.println("\nChoose action: ");
             System.out.println("1. Feed " + animalName);
             System.out.println("2. Examine " + animalName);
@@ -119,6 +128,8 @@ public class Handler extends People {
                         break;
                 }
             } while (choice !=0);
+
+            System.out.println("Finished duties for the day.");
 
         } else{
             System.out.println("Finished duties for the day.");
