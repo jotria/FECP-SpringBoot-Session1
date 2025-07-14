@@ -48,7 +48,6 @@ public class Main {
                     break;
                 case 2:
                     handler.animalDutyMenu();
-                    handler.handlerAction();
                     break;
                 case 3:
                     break;

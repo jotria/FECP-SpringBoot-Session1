@@ -1,5 +1,7 @@
 package org.example.People;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Handler extends People {
@@ -36,52 +38,72 @@ public class Handler extends People {
         }
     }
 
-    public int animalDutyMenu() {
+    public void animalDutyMenu() {
+        int animalNumber;
+        String animalName;
+
         if (animalHandlerCheck()) {
             System.out.println("\n--- Animal Duty Menu ---");
 
             // Match handler to the appropriate enclosure
             if (handlerName.equals(adminModule.pachydermEnclosure.getStaff())) {
-                System.out.println("Pachyderm Enclosure Animals:");
+                System.out.println("\nPachyderm Enclosure Animals:");
                 for (int i=0; i<adminModule.pachydermEnclosure.getAnimals().size(); i++) {
-                    System.out.println(i+1 + adminModule.pachydermEnclosure.getAnimals().get(i));
+                    System.out.println((i+1) + ". " + adminModule.pachydermEnclosure.getAnimals().get(i).getName());
                 }
-                return adminModule.pachydermEnclosure.getAnimals().size();
+
+                System.out.println("\nChoose animal number to interact with (0 to exit): ");
+                animalNumber = scanner.nextInt();
+                scanner.nextLine();
+
+                animalName = adminModule.pachydermEnclosure.getAnimals().get(animalNumber-1).getName();
+
+                handlerAction(animalName, animalNumber);
+
             } else if (handlerName.equals(adminModule.felineEnclosure.getStaff())) {
-                System.out.println("Feline Enclosure Animals:");
+                System.out.println("\nFeline Enclosure Animals:");
                 for (int i=0; i<adminModule.felineEnclosure.getAnimals().size(); i++) {
-                    System.out.println(i+1 + adminModule.felineEnclosure.getAnimals().get(i));
+                    System.out.println((i+1) + ". " + adminModule.felineEnclosure.getAnimals().get(i));
                 }
-                return adminModule.felineEnclosure.getAnimals().size();
+
+                System.out.println("\nChoose animal number to interact with (0 to exit): ");
+                animalNumber = scanner.nextInt();
+                scanner.nextLine();
+
+                animalName = adminModule.felineEnclosure.getAnimals().get(animalNumber-1).getName();
+
+                handlerAction(animalName, animalNumber);
+
             } else if (handlerName.equals(adminModule.birdEnclosure.getStaff())) {
-                System.out.println("Bird Enclosure Animals:");
+                System.out.println("\nBird Enclosure Animals:");
                 for (int i=0; i<adminModule.pachydermEnclosure.getAnimals().size(); i++) {
-                    System.out.println(i+1 + adminModule.birdEnclosure.getAnimals().get(i));
+                    System.out.println((i+1) + ". " + adminModule.birdEnclosure.getAnimals().get(i));
                 }
-                return adminModule.birdEnclosure.getAnimals().size();
+
+                System.out.print("\nChoose animal number to interact with (0 to exit): ");
+                animalNumber = scanner.nextInt();
+                scanner.nextLine();
+
+                animalName = adminModule.birdEnclosure.getAnimals().get(animalNumber-1).getName();
+
+                handlerAction(animalName, animalNumber);
             }
-            System.out.println("No matching enclosure found for handler: " + handlerName);
-            return 0;
+
         }
-        System.out.println("Handler check failed.");
-        return 0;
+
     }
 
-    public void handlerAction(){
-        System.out.println("Choose animal number to interact with (0 to exit): ");
-        int animalNumber = scanner.nextInt();
-        scanner.nextLine();
-
-        if(animalDutyMenu()>animalNumber && animalNumber >0){
-            System.out.println("Choose action: ");
-            System.out.println("1. Feed" + adminModule.pachydermEnclosure.getAnimals().get(animalNumber-1));
-            System.out.println("2. Examine" + adminModule.pachydermEnclosure.getAnimals().get(animalNumber-1));
-            System.out.println("3. Exercise" + adminModule.pachydermEnclosure.getAnimals().get(animalNumber-1));
+    public void handlerAction(String animalName, int animalNumber){
+        if(animalNumber >0){
+            System.out.println("\nChoose action: ");
+            System.out.println("1. Feed " + animalName);
+            System.out.println("2. Examine " + animalName);
+            System.out.println("3. Exercise " + animalName);
 
             int choice;
 
             do{
-                System.out.print("Choose an option: ");
+                System.out.print("\nChoose an option: ");
                 choice = scanner.nextInt();
                 scanner.nextLine();
 
@@ -90,7 +112,7 @@ public class Handler extends People {
                         feedAnimal();
                         break;
                     case 2:
-                        examineAnimal();
+                        examineAnimal(animalName);
                         break;
                     case 3:
                         exerciseAnimal();
@@ -108,9 +130,13 @@ public class Handler extends People {
         System.out.println("Feeding...");
     }
 
-    public void examineAnimal(){
+    public void examineAnimal(String animalName){
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = currentDateTime.format(formatter);
+        
         System.out.println("Sending to Hospital...");
-
+        System.out.println(animalName + "admitted at" + formattedDateTime);
     }
 
     public void exerciseAnimal(){
