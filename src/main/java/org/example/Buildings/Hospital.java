@@ -37,6 +37,7 @@ public class Hospital implements Building{
             System.out.print("Option: ");
 
             choice = input.nextInt();
+
             switch (choice){
                 case 1:
                     viewSickAnimals();
@@ -80,6 +81,7 @@ public class Hospital implements Building{
     public void removeSickAnimal (Animal animal){
         listOfSickAnimals.remove(animal);
     }
+
 
     public void healAllSickAnimals(){
         ArrayList<Animal> toHeal = new ArrayList<>(listOfSickAnimals);

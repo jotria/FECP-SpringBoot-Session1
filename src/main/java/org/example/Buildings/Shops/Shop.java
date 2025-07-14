@@ -35,7 +35,6 @@ public class Shop implements Building {
             if (choice == 1){
                 makePurchase();
             }
-            
         }while (choice != 0);
     }
     public HashMap<String, Integer> getProductList() {
