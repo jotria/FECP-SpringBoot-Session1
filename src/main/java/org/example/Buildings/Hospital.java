@@ -2,6 +2,7 @@ package org.example.Buildings;
 
 import org.example.entity.Animal;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,13 +28,13 @@ public class Hospital implements Building{
 
         do{
 
-
             System.out.println("-----Zoo Hospital Monitor-----");
             System.out.println("1. View sick animals.");
             System.out.println("2. View healed animals.");
             System.out.println("3. Attend Science Lecture");
             System.out.println("4. Heal Animals");
             System.out.println("5. Exit");
+            System.out.print("Option: ");
 
             choice = input.nextInt();
 
@@ -81,11 +82,11 @@ public class Hospital implements Building{
         listOfSickAnimals.remove(animal);
     }
 
-    public void healAllSickAnimals() {
-        // Create a copy of the list to avoid modifying it during iteration
+
+    public void healAllSickAnimals(){
         ArrayList<Animal> toHeal = new ArrayList<>(listOfSickAnimals);
 
-        for (Animal animal : toHeal) {
+        for(Animal animal : toHeal){
             addHealedAnimal(animal);
             listOfHealedAnimals.put(animal,LocalDate.now());
         }

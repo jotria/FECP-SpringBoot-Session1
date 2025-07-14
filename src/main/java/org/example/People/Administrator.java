@@ -4,6 +4,8 @@ import org.example.Buildings.Enclosures.BirdEnclosure;
 import org.example.Buildings.Enclosures.FelineEnclosure;
 import org.example.Buildings.Enclosures.PachydermEnclosure;
 import org.example.Buildings.Hospital;
+import org.example.Buildings.Shops.Shop;
+import org.example.Buildings.Shops.TicketShop;
 import org.example.Zoo;
 
 import java.util.HashMap;
@@ -11,12 +13,14 @@ import java.util.Scanner;
 
 public class Administrator extends People{
     Scanner scanner = new Scanner(System.in);
-    Zoo zoo = new Zoo();
+    Zoo zoo = new Zoo(this);
     HashMap<String, String> zooSetupList = zoo.getZooSetupList();
     PachydermEnclosure pachydermEnclosure;
     FelineEnclosure felineEnclosure;
     BirdEnclosure birdEnclosure;
     Hospital hospital;
+    TicketShop ticketShop;
+    Shop shop;
 
     public boolean setup() {
         System.out.println("\n--- Zoo Setup ---");
@@ -59,6 +63,9 @@ public class Administrator extends People{
         hospital.addSickAnimal(birdEnclosure.getAnimals().getFirst());
         hospital.addSickAnimal(felineEnclosure.getAnimals().getFirst());
 
+        ticketShop = new TicketShop();
+        shop = new Shop(zooSetupList.get(shopVendor));
+
         System.out.println("Zoo staff setup complete.");
 
         return true;
@@ -66,5 +73,33 @@ public class Administrator extends People{
 
     public HashMap<String, String> getZooSetupList() {
         return zooSetupList;
+    }
+
+    public Hospital getHospital() {
+        return hospital;
+    }
+
+    public TicketShop getTicketShop() {
+        return ticketShop;
+    }
+
+    public PachydermEnclosure getPachydermEnclosure() {
+        return pachydermEnclosure;
+    }
+
+    public FelineEnclosure getFelineEnclosure() {
+        return felineEnclosure;
+    }
+
+    public BirdEnclosure getBirdEnclosure() {
+        return birdEnclosure;
+    }
+
+    public Zoo getZoo() {
+        return zoo;
+    }
+
+    public Shop getShop() {
+        return shop;
     }
 }
