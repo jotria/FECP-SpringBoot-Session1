@@ -22,6 +22,22 @@ public class Shop implements Building {
 
     }
 
+    public void enterShop(){
+        Scanner input = new Scanner(System.in);
+
+        int choice;
+
+        do {
+            listAvailableProducts();
+            System.out.println("Do you want to make a purchase? 1 if yes | 0 if no");
+            choice = input.nextInt();
+
+            if (choice == 1){
+                makePurchase();
+            }
+            
+        }while (choice != 0);
+    }
     public HashMap<String, Integer> getProductList() {
         return productList;
     }
