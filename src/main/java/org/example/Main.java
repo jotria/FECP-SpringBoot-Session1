@@ -11,7 +11,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Administrator adminModule = new Administrator();
         Handler handler = new Handler(adminModule);
-        TicketShop ticketShop = new TicketShop();
         boolean isZooOpen = false;
         boolean isZooSetupCompleted = false;
 
@@ -51,7 +50,8 @@ public class Main {
                     if(!isZooSetupCompleted){
                         isZooSetupCompleted = adminModule.setup();
                         if(isZooOpen){
-                            ticketShop.enter();
+                            adminModule.getTicketShop().enter();
+                            adminModule.getHospital().enterHospital();
                         }
                         else{
                             System.out.println("Zoo is not opened for visitors yet.");
@@ -59,7 +59,8 @@ public class Main {
                     }
                     else{
                         if(isZooOpen){
-                            ticketShop.enter();
+                            adminModule.getTicketShop().enter();
+                            adminModule.getHospital().enterHospital();
                         }else {
                             System.out.println("Zoo setup already completed, but zoo is not opened for visitors yet");
                         }
