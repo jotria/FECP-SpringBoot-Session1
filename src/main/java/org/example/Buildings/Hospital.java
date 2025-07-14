@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Hospital implements Building{
     private String staff;
@@ -18,6 +19,40 @@ public class Hospital implements Building{
         this.staff = staff;
         listOfSickAnimals = new ArrayList<>();
         listOfHealedAnimals = new HashMap<>();
+    }
+
+    public void enterHospital(){
+        Scanner input = new Scanner(System.in);
+        int choice;
+
+        do{
+            choice = input.nextInt();
+
+            System.out.println("-----Zoo Hospital Monitor-----");
+            System.out.println("1. View sick animals.");
+            System.out.println("2. View healed animals.");
+            System.out.println("3. Attend Science Lecture");
+            System.out.println("4. Heal Animals");
+            System.out.println("5. Exit");
+
+            switch (choice){
+                case 1:
+                    viewSickAnimals();
+                    break;
+                case 2:
+                    viewHealedAnimals();
+                    break;
+                case 3:
+                    attendScienceLecture();
+                    break;
+                case 4:
+                    healAllSickAnimals();
+                    break;
+            }
+
+        }while(choice != 5);
+        System.out.println("Exiting Zoo Vet Hospital. Goodbye!");
+
     }
 
     public void viewSickAnimals(){
@@ -54,9 +89,6 @@ public class Hospital implements Building{
         System.out.println(staff + " gives a science lecture. Wow!");
     }
 
-    public void exitHospital(){
-        System.out.println("Exiting Zoo Vet Hospital. Goodbye!");
-    }
     @Override
     public String getStaff() {
         return this.staff;
