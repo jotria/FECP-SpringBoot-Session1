@@ -26,7 +26,7 @@ public class Hospital implements Building{
         int choice;
 
         do{
-            choice = input.nextInt();
+
 
             System.out.println("-----Zoo Hospital Monitor-----");
             System.out.println("1. View sick animals.");
@@ -34,6 +34,8 @@ public class Hospital implements Building{
             System.out.println("3. Attend Science Lecture");
             System.out.println("4. Heal Animals");
             System.out.println("5. Exit");
+
+            choice = input.nextInt();
 
             switch (choice){
                 case 1:
@@ -79,9 +81,15 @@ public class Hospital implements Building{
         listOfSickAnimals.remove(animal);
     }
 
-    public void healAllSickAnimals(){
-        listOfSickAnimals.forEach(this::addHealedAnimal);
-        listOfSickAnimals.forEach(this::removeSickAnimal);
+    public void healAllSickAnimals() {
+        // Create a copy of the list to avoid modifying it during iteration
+        ArrayList<Animal> toHeal = new ArrayList<>(listOfSickAnimals);
+
+        for (Animal animal : toHeal) {
+            addHealedAnimal(animal);
+            listOfHealedAnimals.put(animal,LocalDate.now());
+        }
+
         viewHealedAnimals();
     }
 
