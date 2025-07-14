@@ -1,10 +1,14 @@
-package org.example.ticket_sytem;
+package org.example.Buildings.Shops;
+
+import org.example.Buildings.Building;
+import org.example.ticket_sytem.Ticket;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TicketSystem {
+public class TicketShop implements Building {
 
+    String staff;
     ArrayList<String> validTickets = new ArrayList<>();
 
     private static int ticketCounter = 1000;
@@ -91,4 +95,13 @@ public class TicketSystem {
         }
     }
 
+    @Override
+    public String getStaff() {
+        return staff;
+    }
+
+    @Override
+    public void setStaff(String staff) {
+        this.staff = staff;
+    }
 }
