@@ -16,7 +16,7 @@ public class Administrator extends People{
     FelineEnclosure felineEnclosure;
     BirdEnclosure birdEnclosure;
 
-    public String setup() {
+    public boolean setup() {
         System.out.println("\n--- Zoo Setup ---");
 
         System.out.print("Enter your name, Manager: ");
@@ -53,7 +53,9 @@ public class Administrator extends People{
         felineEnclosure = new FelineEnclosure(zooSetupList.get("Feline Handler"));
         birdEnclosure = new BirdEnclosure(zooSetupList.get("Bird Handler"));
 
-        return "Zoo staff setup complete.";
+        System.out.println("Zoo staff setup complete.");
+        
+        return true;
     }
 
     public HashMap<String, String> getZooSetupList() {
