@@ -10,6 +10,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Administrator adminModule = new Administrator();
         Handler handler = new Handler(adminModule);
+        boolean isZooOpen = false;
+        boolean isZooSetupCompleted = false;
 
         boolean isLoggedIn = false;
         int choice;
@@ -44,7 +46,17 @@ public class Main {
 
             switch (choice){
                 case 1:
-                    System.out.println(adminModule.setup());
+                    if (!isZooSetupCompleted) {
+                        isZooOpen = adminModule.setup();
+                        if (isZooOpen) {
+                            System.out.println("Zoo setup has been completed.");
+                            isZooSetupCompleted = true;
+                        } else {
+                            System.out.println("Zoo setup failed.");
+                        }
+                    } else {
+                        System.out.println("Zoo setup has already been completed and cannot be done again.");
+                    }
                     break;
                 case 2:
                     handler.animalDutyMenu();
