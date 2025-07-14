@@ -30,7 +30,7 @@ public class Shop implements Building {
     public void listAvailableProducts(){
         System.out.println("===Zoo Shop===");
         System.out.println("---Available Products---");
-        productList.forEach((key, value)-> System.out.println("1. "+ key + " | Price: " + value));
+        productList.forEach((key, value)-> System.out.println("- "+ key + " | Price: " + value));
     }
 
 
