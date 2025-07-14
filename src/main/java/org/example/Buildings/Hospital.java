@@ -2,6 +2,7 @@ package org.example.Buildings;
 
 import org.example.entity.Animal;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,7 +27,6 @@ public class Hospital implements Building{
         int choice;
 
         do{
-            choice = input.nextInt();
 
             System.out.println("-----Zoo Hospital Monitor-----");
             System.out.println("1. View sick animals.");
@@ -34,7 +34,9 @@ public class Hospital implements Building{
             System.out.println("3. Attend Science Lecture");
             System.out.println("4. Heal Animals");
             System.out.println("5. Exit");
+            System.out.print("Option: ");
 
+            choice = input.nextInt();
             switch (choice){
                 case 1:
                     viewSickAnimals();
@@ -80,8 +82,13 @@ public class Hospital implements Building{
     }
 
     public void healAllSickAnimals(){
-        listOfSickAnimals.forEach(this::addHealedAnimal);
-        listOfSickAnimals.forEach(this::removeSickAnimal);
+        ArrayList<Animal> toHeal = new ArrayList<>(listOfSickAnimals);
+
+        for(Animal animal : toHeal){
+            addHealedAnimal(animal);
+            listOfHealedAnimals.put(animal,LocalDate.now());
+        }
+
         viewHealedAnimals();
     }
 

@@ -4,6 +4,7 @@ import org.example.Buildings.Enclosures.BirdEnclosure;
 import org.example.Buildings.Enclosures.FelineEnclosure;
 import org.example.Buildings.Enclosures.PachydermEnclosure;
 import org.example.Buildings.Hospital;
+import org.example.Buildings.Shops.Shop;
 import org.example.Buildings.Shops.TicketShop;
 import org.example.Zoo;
 
@@ -19,6 +20,7 @@ public class Administrator extends People{
     BirdEnclosure birdEnclosure;
     Hospital hospital;
     TicketShop ticketShop;
+    Shop shop;
 
     public boolean setup() {
         System.out.println("\n--- Zoo Setup ---");
@@ -62,6 +64,7 @@ public class Administrator extends People{
         hospital.addSickAnimal(felineEnclosure.getAnimals().getFirst());
 
         ticketShop = new TicketShop();
+        shop = new Shop(zooSetupList.get(shopVendor));
 
         System.out.println("Zoo staff setup complete.");
 
@@ -94,5 +97,9 @@ public class Administrator extends People{
 
     public Zoo getZoo() {
         return zoo;
+    }
+
+    public Shop getShop() {
+        return shop;
     }
 }
