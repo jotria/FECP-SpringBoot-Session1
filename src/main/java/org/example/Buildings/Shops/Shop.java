@@ -20,7 +20,6 @@ public class Shop implements Building {
         productList.put("Pizza", 150);
         productList.put("Water", 20);
 
-
     }
 
     public HashMap<String, Integer> getProductList() {
@@ -68,7 +67,7 @@ public class Shop implements Building {
 
         if (checkoutFlag.equalsIgnoreCase("yes")) {
             System.out.println("Payment successful!");
-            System.out.println("\n📜 Receipt:");
+            System.out.println("\nReceipt:");
             for (String item : selectedProducts) {
                 System.out.println(item + " - ₱" + productList.get(item));
             }
