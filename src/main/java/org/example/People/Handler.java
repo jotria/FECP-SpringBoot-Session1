@@ -52,7 +52,7 @@ public class Handler extends People {
                     System.out.println((i+1) + ". " + adminModule.pachydermEnclosure.getAnimals().get(i).getName());
                 }
 
-                System.out.println("\nChoose animal number to interact with (0 to exit): ");
+                System.out.print("\nChoose animal number to interact with (0 to exit): ");
                 animalNumber = scanner.nextInt();
                 scanner.nextLine();
 
@@ -63,10 +63,10 @@ public class Handler extends People {
             } else if (handlerName.equals(adminModule.felineEnclosure.getStaff())) {
                 System.out.println("\nFeline Enclosure Animals:");
                 for (int i=0; i<adminModule.felineEnclosure.getAnimals().size(); i++) {
-                    System.out.println((i+1) + ". " + adminModule.felineEnclosure.getAnimals().get(i));
+                    System.out.println((i+1) + ". " + adminModule.felineEnclosure.getAnimals().get(i).getName());
                 }
 
-                System.out.println("\nChoose animal number to interact with (0 to exit): ");
+                System.out.print("\nChoose animal number to interact with (0 to exit): ");
                 animalNumber = scanner.nextInt();
                 scanner.nextLine();
 
@@ -77,7 +77,7 @@ public class Handler extends People {
             } else if (handlerName.equals(adminModule.birdEnclosure.getStaff())) {
                 System.out.println("\nBird Enclosure Animals:");
                 for (int i=0; i<adminModule.pachydermEnclosure.getAnimals().size(); i++) {
-                    System.out.println((i+1) + ". " + adminModule.birdEnclosure.getAnimals().get(i));
+                    System.out.println((i+1) + ". " + adminModule.birdEnclosure.getAnimals().get(i).getName());
                 }
 
                 System.out.print("\nChoose animal number to interact with (0 to exit): ");
@@ -136,7 +136,7 @@ public class Handler extends People {
         String formattedDateTime = currentDateTime.format(formatter);
         
         System.out.println("Sending to Hospital...");
-        System.out.println(animalName + "admitted at" + formattedDateTime);
+        System.out.println(animalName + " admitted at " + formattedDateTime);
     }
 
     public void exerciseAnimal(){

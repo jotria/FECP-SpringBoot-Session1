@@ -43,7 +43,7 @@ public class Administrator extends People{
         String ticketVendor = scanner.nextLine();
         zooSetupList.put("Ticket Vendor", ticketVendor);
 
-        System.out.print("Enter vendor for the Shop: ");
+        System.out.print("Enter Vendor for the Shop: ");
         String shopVendor = scanner.nextLine();
         zooSetupList.put("Shop Vendor", shopVendor);
 
