@@ -89,6 +89,7 @@ public class Hospital implements Building{
         for(Animal animal : toHeal){
             addHealedAnimal(animal);
             listOfHealedAnimals.put(animal,LocalDate.now());
+            removeSickAnimal(animal);
         }
 
         viewHealedAnimals();

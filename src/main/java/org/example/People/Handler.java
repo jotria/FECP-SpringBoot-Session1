@@ -1,5 +1,7 @@
 package org.example.People;
 
+import org.example.entity.Animal;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -57,10 +59,10 @@ public class Handler extends People {
                 scanner.nextLine();
 
                 if (animalNumber == 0){
-                    handlerAction(null, animalNumber);
+                    handlerAction(null, animalNumber, adminModule.pachydermEnclosure.getAnimals().get(animalNumber-1));
                 } else{
                     animalName = adminModule.pachydermEnclosure.getAnimals().get(animalNumber-1).getName();
-                    handlerAction(animalName, animalNumber);
+                    handlerAction(animalName, animalNumber, adminModule.pachydermEnclosure.getAnimals().get(animalNumber-1));
                 }
 
             } else if (handlerName.equals(adminModule.felineEnclosure.getStaff())) {
@@ -74,10 +76,10 @@ public class Handler extends People {
                 scanner.nextLine();
 
                 if (animalNumber == 0){
-                    handlerAction(null, animalNumber);
+                    handlerAction(null, animalNumber, adminModule.felineEnclosure.getAnimals().get(animalNumber-1));
                 } else{
                     animalName = adminModule.felineEnclosure.getAnimals().get(animalNumber-1).getName();
-                    handlerAction(animalName, animalNumber);
+                    handlerAction(animalName, animalNumber, adminModule.felineEnclosure.getAnimals().get(animalNumber-1));
                 }
 
             } else if (handlerName.equals(adminModule.birdEnclosure.getStaff())) {
@@ -91,10 +93,10 @@ public class Handler extends People {
                 scanner.nextLine();
 
                 if (animalNumber == 0){
-                    handlerAction(null, animalNumber);
+                    handlerAction(null, animalNumber, adminModule.birdEnclosure.getAnimals().get(animalNumber-1));
                 } else{
                     animalName = adminModule.birdEnclosure.getAnimals().get(animalNumber-1).getName();
-                    handlerAction(animalName, animalNumber);
+                    handlerAction(animalName, animalNumber, adminModule.birdEnclosure.getAnimals().get(animalNumber-1));
                 }
             }
 
@@ -102,7 +104,7 @@ public class Handler extends People {
 
     }
 
-    public void handlerAction(String animalName, int animalNumber){
+    public void handlerAction(String animalName, int animalNumber, Animal animal){
         if(animalNumber > 0){
             System.out.println("\nChoose action: ");
             System.out.println("1. Feed " + animalName);
@@ -121,7 +123,7 @@ public class Handler extends People {
                         feedAnimal();
                         break;
                     case 2:
-                        examineAnimal(animalName);
+                        examineAnimal(animalName, animal);
                         break;
                     case 3:
                         exerciseAnimal();
@@ -141,13 +143,16 @@ public class Handler extends People {
         System.out.println("Feeding...");
     }
 
-    public void examineAnimal(String animalName){
+    public void examineAnimal(String animalName, Animal animal){
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = currentDateTime.format(formatter);
         
         System.out.println("Sending to Hospital...");
         System.out.println(animalName + " admitted at " + formattedDateTime);
+
+        adminModule.getHospital().addSickAnimal(animal);
+
     }
 
     public void exerciseAnimal(){

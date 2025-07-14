@@ -72,10 +72,14 @@ public class Main {
                             System.out.println("Zoo setup already completed, but zoo is not opened for visitors yet");
                         }
                     }
-
                     break;
                 case 2:
-                    handler.animalDutyMenu();
+                    if(!isZooSetupCompleted){
+                        System.out.println("Proceed with zoo staff setup first!");
+                    }
+                    else{
+                        handler.animalDutyMenu();
+                    }
                     break;
                 case 3:
                     isZooOpen = true;
