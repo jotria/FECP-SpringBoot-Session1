@@ -64,13 +64,10 @@ public class Zoo {
 
                     if(option == 1){
                         animal = "Elephant";
-                        adminModule.getPachydermEnclosure().getAnimals().getFirst().makeSound();
                     } else if(option == 2){
                         animal = "Lion";
-                        adminModule.getFelineEnclosure().getAnimals().getFirst().makeSound();
                     } else if (option==3) {
                         animal = "Owl";
-                        adminModule.getBirdEnclosure().getAnimals().getFirst().makeSound();
                     } else{
                         animal = "Not in choices";
                     }
@@ -92,10 +89,10 @@ public class Zoo {
                     }
                     break;
                 case 2:
-                    adminModule.getHospital().enterHospital();
+                    adminModule.getShop().enterShop();
                     break;
                 case 3:
-                    
+                    adminModule.getHospital().enterHospital();
                     break;
                 case 4:
                     break;

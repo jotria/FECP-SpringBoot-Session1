@@ -53,6 +53,7 @@ public class Main {
                             isValidTicket = adminModule.getTicketShop().enter();
                             if (isValidTicket){
                                 //Enter Zoo Module
+                                adminModule.getZoo().zooMenu();
                             }
                         }
                         else{
@@ -65,6 +66,7 @@ public class Main {
                             isValidTicket = adminModule.getTicketShop().enter();
                             if (isValidTicket){
                                 //Enter Zoo Module
+                                adminModule.getZoo().zooMenu();
                             }
                         }else {
                             System.out.println("Zoo setup already completed, but zoo is not opened for visitors yet");
